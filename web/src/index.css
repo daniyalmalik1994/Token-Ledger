@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    /* The faint horizontal rules of an accounting pad. */
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0 31px,
+      rgba(18, 33, 27, 0.05) 31px 32px
+    );
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-credit ring-offset-2 ring-offset-paper;
+  }
+}
+
+@layer components {
+  .sheet {
+    @apply border border-rule bg-sheet shadow-sheet;
+  }
+
+  .figure {
+    @apply font-ledger tabular-nums;
+  }
+
+  .eyebrow {
+    @apply font-display text-[11px] uppercase tracking-[0.18em] text-muted;
+  }
+
+  /* Bookkeeping convention: a double rule closes off a total. */
+  .double-rule {
+    @apply border-b-[3px] border-double border-ink;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
